@@ -37,7 +37,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.poc.customSnackbar.ui.theme.CustomSnackbarTheme
-import com.poc.snackBarSample.R
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,7 +50,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold(
                     snackbarHost = {
                         // reuse default SnackbarHost to have default animation and timing handling
-                        Extracted(snackbarHostState)
+                        CustomSnackBar(snackbarHostState)
                     }
                 ) {
                     LaunchedEffect(key1 = showSnackBarMessage) {
@@ -80,7 +79,7 @@ class MainActivity : ComponentActivity() {
     }
 
     @Composable
-    private fun Extracted(snackbarHostState: SnackbarHostState) {
+    private fun CustomSnackBar(snackbarHostState: SnackbarHostState) {
         SnackbarHost(snackbarHostState) { data ->
             // custom snackbar with the custom border
             Snackbar(
